@@ -1,0 +1,29 @@
+.hidden {
+  display: none;
+}
+
+.gallery {
+  margin-top: 30px;
+  /* max-width: 1140px; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+img {
+  display: block;
+  width: 300px;
+}
+
+.photo-card {
+  width: calc((100% - (3 * 20px)) / 4);
+}
+
+.info {
+  display: flex;
+}
+.info-item {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}

@@ -2,8 +2,6 @@ import { searchApiData } from './api-func';
 import Notiflix from 'notiflix';
 import { makeMarkup } from './markup';
 import { selectors } from './selectors';
-import { onSubmitSearch } from './functions';
-import { onLoadMore } from './functions';
 
 let page = 0;
 let limit = 40;

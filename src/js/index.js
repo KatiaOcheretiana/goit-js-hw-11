@@ -1,6 +1,6 @@
 import { selectors } from './selectors';
-import { onSubmitSearch } from './functions';
-import { onLoadMore } from './functions';
+import { onSubmitSearch } from '../js/functions';
+import { onLoadMore } from '../js/functions';
 
 
 selectors.loadMore.classList.add('hidden')

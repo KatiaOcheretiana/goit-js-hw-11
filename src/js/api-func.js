@@ -21,6 +21,7 @@ export async function searchApiData(searchItem, page) {
     }
     
     const response = await axios(options);
+
     return response.data;
 
 }

@@ -3,6 +3,13 @@ import Notiflix from 'notiflix';
 import { makeMarkup } from './markup';
 import { selectors } from './selectors';
 
+
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
+const lightbox = new SimpleLightbox('.gallery a');
+
+
 let page = 0;
 let limit = 40;
 let totalPages = 0;
@@ -33,7 +40,9 @@ export async function onSubmitSearch(evt) {
        
         if (page > 0) {
             selectors.loadMore.classList.remove('hidden')
-        }
+      }
+      
+      Notiflix.Notify.success(`Hooray! We found ${searchData.totalHits} images.`);
   } catch (error) {
 Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
   }
@@ -52,7 +61,9 @@ export async function onLoadMore() {
                return
     }
        const loadMoreMarkup = await makeMarkup(loadMoreData.hits)
-selectors.galleryList.insertAdjacentHTML('beforeend',loadMoreMarkup)
+      selectors.galleryList.insertAdjacentHTML('beforeend', loadMoreMarkup)
+      
+      lightbox.refresh()
     
    } catch (error) {
      Notiflix.Notify.failure('Failed to load more images. Please try again.');

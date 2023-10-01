@@ -1,5 +1,4 @@
 
-
 export function makeMarkup(searchData) {
   const result = searchData.map(item => `<div class="photo-card">
     <a href="${item.largeImageURL}">
@@ -20,6 +19,8 @@ export function makeMarkup(searchData) {
   </div>
 </div>`).join('')
   
+  const lightbox = new SimpleLightbox('.gallery a');
+
     return result
       
 

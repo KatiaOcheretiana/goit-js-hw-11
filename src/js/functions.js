@@ -3,11 +3,11 @@ import Notiflix from 'notiflix';
 import { makeMarkup } from './markup';
 import { selectors } from './selectors';
 
-
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const lightbox = new SimpleLightbox('.gallery a');
+
 
 
 let page = 0;
@@ -36,7 +36,8 @@ export async function onSubmitSearch(evt) {
         }
 
         const markup = await makeMarkup(searchData.hits)
-        selectors.galleryList.innerHTML = markup;
+      selectors.galleryList.innerHTML = markup;
+      const lightbox = new SimpleLightbox('.gallery a');
        
         if (page > 0) {
             selectors.loadMore.classList.remove('hidden')

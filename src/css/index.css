@@ -73,6 +73,7 @@ img {
   display: flex;
   padding: 5px 5px;
   text-align: center;
+  gap: 15px;
 }
 .info-item {
   display: flex;

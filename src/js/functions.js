@@ -2,6 +2,7 @@ import { searchApiData } from './api-func';
 import Notiflix from 'notiflix';
 import { makeMarkup } from './markup';
 import { selectors } from './selectors';
+import { smoothlyScroll } from './smoothly-scroll';
 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -66,7 +67,9 @@ export async function onLoadMore() {
       selectors.galleryList.insertAdjacentHTML('beforeend', loadMoreMarkup)
       
       lightbox.refresh()
-    
+
+      smoothlyScroll()
+
     } catch (error) {
         console.log(error);
      Notiflix.Notify.failure('Failed to load more images. Please try again.');

@@ -43,7 +43,8 @@ export async function onSubmitSearch(evt) {
       }
       
       Notiflix.Notify.success(`Hooray! We found ${searchData.totalHits} images.`);
-  } catch (error) {
+    } catch (error) {
+      console.log(error);
 Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
   }
 }
@@ -65,7 +66,8 @@ export async function onLoadMore() {
       
       lightbox.refresh()
     
-   } catch (error) {
+    } catch (error) {
+        console.log(error);
      Notiflix.Notify.failure('Failed to load more images. Please try again.');
    }
 }

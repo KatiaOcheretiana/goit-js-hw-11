@@ -8,6 +8,8 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const lightbox = new SimpleLightbox('.gallery a');
+      //  lightbox.refresh()
+
 
 
 
@@ -19,7 +21,8 @@ let totalPages = 0;
 
 export async function onSubmitSearch(evt) {
     evt.preventDefault()
-    page = 1
+  page = 1
+
     selectors.galleryList.innerHTML = ""
     const searchItem = selectors.input.value
             selectors.loadMore.classList.add('hidden')
@@ -45,6 +48,14 @@ export async function onSubmitSearch(evt) {
       }
       
       Notiflix.Notify.success(`Hooray! We found ${searchData.totalHits} images.`);
+
+
+            if ( searchData.totalHits < limit) {
+         selectors.loadMore.classList.add('hidden')
+      }
+
+       lightbox.refresh()
+      
     } catch (error) {
       console.log(error);
 Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
@@ -57,17 +68,22 @@ export async function onLoadMore() {
         page += 1;
     try {
         const loadMoreData = await searchApiData(searchItem, page)
-        totalPages = Math.ceil(loadMoreData.totalHits / limit);
-           if (page === totalPages) {
+           totalPages = loadMoreData.totalHits / limit;
+      
+      if ((page * limit) === loadMoreData.totalHits) {
          selectors.loadMore.classList.add('hidden')
-               Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-               return
-    }
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+      }
+       
+
        const loadMoreMarkup = await makeMarkup(loadMoreData.hits)
       selectors.galleryList.insertAdjacentHTML('beforeend', loadMoreMarkup)
       
-      lightbox.refresh()
+             if ( Math.ceil(totalPages) === page ) {
+         selectors.loadMore.classList.add('hidden')
+      }
 
+      lightbox.refresh()
       smoothlyScroll()
 
     } catch (error) {

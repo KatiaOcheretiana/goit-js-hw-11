@@ -20,9 +20,8 @@ export function makeMarkup(searchData) {
 </div>`).join('')
   
   const lightbox = new SimpleLightbox('.gallery a');
-
+  // lightbox.destroy()
+  
     return result
-      
-
 
 }

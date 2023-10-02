@@ -8,8 +8,6 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const lightbox = new SimpleLightbox('.gallery a');
-      //  lightbox.refresh()
-
 
 
 
@@ -41,7 +39,8 @@ export async function onSubmitSearch(evt) {
 
         const markup = await makeMarkup(searchData.hits)
       selectors.galleryList.innerHTML = markup;
-      const lightbox = new SimpleLightbox('.gallery a');
+         lightbox.refresh()
+
        
         if (page > 0) {
             selectors.loadMore.classList.remove('hidden')
@@ -53,8 +52,6 @@ export async function onSubmitSearch(evt) {
             if ( searchData.totalHits < limit) {
          selectors.loadMore.classList.add('hidden')
       }
-
-       lightbox.refresh()
       
     } catch (error) {
       console.log(error);
@@ -83,7 +80,8 @@ export async function onLoadMore() {
          selectors.loadMore.classList.add('hidden')
       }
 
-      lightbox.refresh()
+         lightbox.refresh()
+
       smoothlyScroll()
 
     } catch (error) {

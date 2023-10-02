@@ -1,6 +1,5 @@
 body {
   margin: 0 auto;
-  min-width: 1140px;
 }
 
 .section-form {
@@ -50,12 +49,12 @@ button:focus {
 }
 
 .gallery {
-  margin-top: 30px;
+  max-width: 1640px;
+  margin: 20px auto;
   display: flex;
 
   flex-wrap: wrap;
   gap: 20px;
-  /* min-width: 1160px; */
 
   padding-left: 20px;
   padding-right: 20px;
@@ -70,8 +69,6 @@ img {
 
 .photo-card {
   width: calc((100% - (3 * 20px)) / 4);
-
-  /* width: 350px; */
   height: 290px;
 
   border-radius: 0px 0px 4px 4px;
@@ -84,7 +81,6 @@ img {
   padding: 10px 20px;
   text-align: center;
   justify-content: space-between;
-  /* gap: 25px; */
 }
 .info-item {
   display: flex;

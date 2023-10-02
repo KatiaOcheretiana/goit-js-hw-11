@@ -65,13 +65,15 @@ export async function onLoadMore() {
         page += 1;
     try {
         const loadMoreData = await searchApiData(searchItem, page)
-           totalPages = loadMoreData.totalHits / limit;
+      totalPages = loadMoreData.totalHits / limit;
       
-      if ((page * limit) === loadMoreData.totalHits) {
-         selectors.loadMore.classList.add('hidden')
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-      }
+      
        
+ if (page > totalPages) { 
+      selectors.loadMore.classList.add('hidden');
+      Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+      }
+      
 
        const loadMoreMarkup = await makeMarkup(loadMoreData.hits)
       selectors.galleryList.insertAdjacentHTML('beforeend', loadMoreMarkup)
